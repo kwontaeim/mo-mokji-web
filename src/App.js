@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+import Header from './components/Header';
+import Action from './components/Action';
+import OptionList from './components/OptionList';
+import AddOption from './components/AddOption';
+import DecisionModal from './components/DecisionModal';
+
+const App = () => {
+  const [items, setItems] = useState([]);
+  const [selectedItem, setSelectedItem] = useState();
+
+  const handlePick = () => {
+    const randomIndex = Math.floor(Math.random() * items.length);
+    setSelectedItem(items[randomIndex]);
+  };
+
+  const clearSelectedItem = () => {
+    setSelectedItem(undefined);
+  };
+
+  const addNewItem = newItem => {
+    if (newItem && !items.includes(newItem)) {
+      setItems(items.concat(newItem));
+    }
+  };
+
+  const removeItem = itemToRemove => {
+    setItems(items.filter(item => item !== itemToRemove));
+  };
+
+  const removeAllItems = () => {
+    setItems([]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Action hasOptions={items.length > 0} handlePick={handlePick} />
+      <OptionList
+        handleRemoveAllOptions={removeAllItems}
+        handleRemoveOption={removeItem}
+        items={items}
+      />
+      <AddOption addNewOption={addNewItem} />
+      <DecisionModal
+        selectedOption={selectedItem}
+        handleClearSelectedItem={clearSelectedItem}
+      />
     </div>
   );
-}
+};
 
 export default App;
