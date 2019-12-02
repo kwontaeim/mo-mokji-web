@@ -5,9 +5,62 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  background-color: #422911;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.background {
+  width: 100%;
+  height: 350px;
+  background : url(domo.png) no-repeat;
+  background-position: center center;
+}
+
+.content {
+  text-align: center;
+  color: white;
+}
+
+.remove {
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.option-list {
+  width: 200px;
+  margin: 0 auto;
+  border: 0.5px solid lightgrey;
+}
+
+
+.option {
+  display: inline-block;
+  margin: 2px 10px 2px 10px;
+}
+
+button {
+  color: black;
+}
+
+.decision {
+  color:white;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.button-align {
+  display: inline-block;
+}
+
+.button-align div{
+  display: inline-block;
+}
+
+.margin {
+  margin-bottom: 10px;
 }

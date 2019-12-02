@@ -5,6 +5,7 @@ import Action from './components/Action';
 import OptionList from './components/OptionList';
 import AddOption from './components/AddOption';
 import DecisionModal from './components/DecisionModal';
+import RemoveAllOptions from './components/RemoveAllOptions';
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -12,15 +13,15 @@ const App = () => {
 
   useEffect(() => {
     let storedItems = JSON.parse(localStorage.getItem('items'));
-    if(storedItems) {
-      setItems(storedItems)
+    if (storedItems) {
+      setItems(storedItems);
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
     console.log('items being stored');
-  }, [items])
+  }, [items]);
 
   const handlePick = () => {
     const randomIndex = Math.floor(Math.random() * items.length);
@@ -47,18 +48,25 @@ const App = () => {
 
   return (
     <div>
-      <Header />
-      <Action hasOptions={items.length > 0} handlePick={handlePick} />
-      <OptionList
-        handleRemoveAllOptions={removeAllItems}
-        handleRemoveOption={removeItem}
-        items={items}
-      />
-      <AddOption addNewOption={addNewItem} />
-      <DecisionModal
-        selectedOption={selectedItem}
-        handleClearSelectedItem={clearSelectedItem}
-      />
+    <div class="background"></div>
+      <div class="content">
+        <Header />
+        <OptionList
+          handleRemoveOption={removeItem}
+          items={items}
+        />
+        <AddOption addNewOption={addNewItem} />
+        <DecisionModal
+          selectedOption={selectedItem}
+          handleClearSelectedItem={clearSelectedItem}
+          />
+        <div class="button-align margin">
+        <RemoveAllOptions
+          handleRemoveAllOptions={removeAllItems}
+          />
+        <Action hasOptions={items.length > 0} handlePick={handlePick} />
+          </div>
+      </div>
     </div>
   );
 };

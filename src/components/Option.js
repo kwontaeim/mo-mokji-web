@@ -2,9 +2,9 @@ import React from 'react';
 
 const Option = props => {
   return (
-    <div>
-      {props.text}{' '}
-      <button onClick={e => props.handleRemoveOption(props.text)}>삭제</button>
+    <div class="option">
+      <span>{props.text}{' '}</span>
+      <span class="remove" onClick={e => props.handleRemoveOption(props.text)}>X</span>
     </div>
   );
 };

@@ -11,9 +11,9 @@ const AddOption = props => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="option" />
-      <button>추가</button>
+    <form class="margin" onSubmit={handleSubmit}>
+      <input type="text" name="option"/>
+      <button class="btn btn-default btn-xs">추가</button>
     </form>
   );
 };

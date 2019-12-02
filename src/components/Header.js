@@ -2,15 +2,13 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div>
+    <div class="header">
       <h1>
-        뭐 먹지?{' '}
-        <span role="img" aria-label="pig">
-          🐷
+        WHAT SHOULD I EAT?{' '}
+      <span role="img" aria-label="pig">
+          
         </span>
       </h1>
-
-      <h4>먹고 싶은 것만 많은 그대를 위해</h4>
     </div>
   );
 };
