@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Header from './components/Header';
 import Action from './components/Action';
@@ -9,6 +9,18 @@ import DecisionModal from './components/DecisionModal';
 const App = () => {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState();
+
+  useEffect(() => {
+    let storedItems = JSON.parse(localStorage.getItem('items'));
+    if(storedItems) {
+      setItems(storedItems)
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+    console.log('items being stored');
+  }, [items])
 
   const handlePick = () => {
     const randomIndex = Math.floor(Math.random() * items.length);
