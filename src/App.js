@@ -1,74 +1,35 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Link, BrowserRouter as Router, Switch} from 'react-router-dom'
 
-import Header from './components/Header';
-import Action from './components/Action';
-import OptionList from './components/OptionList';
-import AddOption from './components/AddOption';
-import DecisionModal from './components/DecisionModal';
-import RemoveAllOptions from './components/RemoveAllOptions';
+import NotFound from './components/NotFound'
+import Mo_mokji from './components/Mo-mokji'
+import Users from './components/Users'
+import Contact from './components/Contact'
 
 const App = () => {
-  const [items, setItems] = useState([]);
-  const [selectedItem, setSelectedItem] = useState();
-
-  useEffect(() => {
-    let storedItems = JSON.parse(localStorage.getItem('items'));
-    if (storedItems) {
-      setItems(storedItems);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(items));
-    console.log('items being stored');
-  }, [items]);
-
-  const handlePick = () => {
-    const randomIndex = Math.floor(Math.random() * items.length);
-    setSelectedItem(items[randomIndex]);
-  };
-
-  const clearSelectedItem = () => {
-    setSelectedItem(undefined);
-  };
-
-  const addNewItem = newItem => {
-    if (newItem && !items.includes(newItem)) {
-      setItems(items.concat(newItem));
-    }
-  };
-
-  const removeItem = itemToRemove => {
-    setItems(items.filter(item => item !== itemToRemove));
-  };
-
-  const removeAllItems = () => {
-    setItems([]);
-  };
-
   return (
+  <Router>
     <div>
-    <div class="background"></div>
-      <div class="content">
-        <Header />
-        <OptionList
-          handleRemoveOption={removeItem}
-          items={items}
-        />
-        <AddOption addNewOption={addNewItem} />
-        <DecisionModal
-          selectedOption={selectedItem}
-          handleClearSelectedItem={clearSelectedItem}
-          />
-        <div class="button-align margin">
-        <RemoveAllOptions
-          handleRemoveAllOptions={removeAllItems}
-          />
-        <Action hasOptions={items.length > 0} handlePick={handlePick} />
-          </div>
-      </div>
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/users">Users</Link>
+      </li>
+      <li>
+        <Link to="/contact">Contact</Link>
+      </li>
+    </ul>
+    <Switch>
+      <Route exact path="/" component={Mo_mokji} />
+      <Route path="/users" component={Users} />
+      <Route path="/contact" component={Contact} />
+      <Route component={NotFound} />
+    </Switch>
     </div>
+  </Router>
   );
-};
+}
 
 export default App;
