@@ -1,35 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Link, BrowserRouter as Router, Switch} from 'react-router-dom'
+import React, { useState } from 'react';
+import {connect} from 'react-redux';
 
-import NotFound from './components/NotFound'
-import Mo_mokji from './components/Mo-mokji'
-import Users from './components/Users'
-import Contact from './components/Contact'
+import Header from './components/Header';
+import CentreContainer from './components/CentreContainer';
+import Action from './components/Action';
+import OptionList from './components/OptionList';
+import AddOption from './components/AddOption';
+import DecisionModal from './components/DecisionModal';
 
-const App = () => {
+const App = (props) => {
+  const [items, setItems] = useState(['']);
+  const [selectedItem, setSelectedItem] = useState();
+
+  const handlePick = () => {
+    const randomIndex = Math.floor(Math.random() * props.options.length);
+    setSelectedItem(props.options[randomIndex]);
+  };
+
+  const clearSelectedItem = () => {
+    setSelectedItem(undefined);
+  };
+
   return (
-  <Router>
     <div>
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/users">Users</Link>
-      </li>
-      <li>
-        <Link to="/contact">Contact</Link>
-      </li>
-    </ul>
-    <Switch>
-      <Route exact path="/" component={Mo_mokji} />
-      <Route path="/users" component={Users} />
-      <Route path="/contact" component={Contact} />
-      <Route component={NotFound} />
-    </Switch>
+      <Header />
+      <CentreContainer>
+        <Action hasOptions={props.options.length > 0} handlePick={handlePick} />
+        <OptionList/>
+        <AddOption/>
+        <DecisionModal
+          selectedOption={selectedItem}
+          handleClearSelectedItem={clearSelectedItem}
+        />
+      </CentreContainer>
     </div>
-  </Router>
   );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    options : state.options
+  }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
