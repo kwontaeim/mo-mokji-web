@@ -1,4 +1,4 @@
-const selectedOptionReducer = (state = null, action) => {
+const selectedOptionReducer = (state = null, action: any) => {
     switch (action.type) {
       case 'SET_SELECTED_OPTION':
         return action.name;

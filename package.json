@@ -11,7 +11,8 @@
     "redux": "^4.0.5",
     "serialize-javascript": "^2.1.2",
     "styled-components": "^4.4.1",
-    "styled-normalize": "^8.0.6"
+    "styled-normalize": "^8.0.6",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +34,24 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "@types/react-modal": "^3.10.5",
+    "@types/react-redux": "^7.1.8",
+    "@types/styled-components": "^5.1.0"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwontaeim/mo-mokji-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kwontaeim/mo-mokji-web/issues"
+  },
+  "homepage": "https://github.com/kwontaeim/mo-mokji-web#readme"
 }

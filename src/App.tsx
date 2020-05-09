@@ -8,7 +8,7 @@ import OptionList from './components/OptionList';
 import AddOption from './components/AddOption';
 import DecisionModal from './components/DecisionModal';
 
-const App = (props) => {
+const App = (props: any) => {
   const [items, setItems] = useState(['']);
   const [selectedItem, setSelectedItem] = useState();
 
@@ -37,7 +37,7 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     options : state.options
   }

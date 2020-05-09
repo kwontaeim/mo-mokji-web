@@ -13,7 +13,7 @@ const StyledOption = styled.div`
   color: #ffeed3;
 `;
 
-const Option = props => {
+const Option = (props: any) => {
   return (
     <StyledOption>
       {props.text}{' '}
@@ -24,7 +24,7 @@ const Option = props => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     option : state.option
   }

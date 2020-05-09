@@ -28,8 +28,8 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-const AddOption = props => {
-  const handleSubmit = event => {
+const AddOption = (props: any) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
 
     const newOption = event.target.elements.option.value.trim();

@@ -26,7 +26,7 @@ const OptionsTable = styled.div`
   color: #eeeae3;
 `;
 
-const OptionList = props => {
+const OptionList = (props: any) => {
   return (
     <div>
       <OptionListHeader>
@@ -36,7 +36,7 @@ const OptionList = props => {
         </ButtonLink>
       </OptionListHeader>
       <OptionsTable>
-        {props.options.map((item, index) => (
+        {props.options.map((item: string, index: string) => (
           <Option
             key={index}
             text={item}
@@ -47,7 +47,7 @@ const OptionList = props => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     options : state.options
   }

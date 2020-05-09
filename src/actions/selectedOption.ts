@@ -1,4 +1,4 @@
-const setSelectedOption = option => {
+const setSelectedOption = (option: string) => {
     return {
       type: 'SET_SELECTED_OPTION',
       name: option

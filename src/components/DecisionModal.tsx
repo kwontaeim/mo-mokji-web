@@ -37,7 +37,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const DecisionModal = props => {
+const DecisionModal = (props: any) => {
   return (
     <Modal
       isOpen={!!props.selectedOption}

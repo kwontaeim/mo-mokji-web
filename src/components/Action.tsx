@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const Action = props => {
+const Action = (props: any) => {
   return (
     <div>
       <StyledButton disabled={!props.hasOptions} onClick={props.handlePick}>
